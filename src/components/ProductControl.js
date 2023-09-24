@@ -10,16 +10,23 @@ class ProductControl extends Component {
         productFormVisible: false
     }
    }
+    handleClick = ()=>{
+        this.setState({
+            productFormVisible: true
+        })
+    }
    render() {
     let currentVisibleState = null;
+    let addProductButton = null;
        if (this.state.productFormVisible){
            currentVisibleState = <NewProductForm />
        }else{
            currentVisibleState = <ProductList />
+           addProductButton = <button onClick={this.handleClick}>Add Product</button>
        }
        return (
            <React.Fragment>
-               <AddProduct />
+               {addProductButton}
                {currentVisibleState}
            </React.Fragment>
        )
